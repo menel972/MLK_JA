@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mlk_ja/home/presentation/bloc/home_bloc.dart';
 import 'package:mlk_ja/home/presentation/widgets/account/account_view.dart';
+import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/calendar_view.dart';
 import 'package:mlk_ja/home/presentation/widgets/carousel/carousel_view.dart';
 import 'package:mlk_ja/home/presentation/widgets/feedback/feedback_view.dart';
@@ -23,7 +24,10 @@ class HomeScreen extends HookConsumerWidget {
         return Scaffold(
           body: [
             const CarouselView(),
-            const CalendarView(),
+            BlocProvider(
+              create: (_) => CalendarBloc(),
+              child: const CalendarView(),
+            ),
             const StaffView(),
             const FeedbackView(),
             const AccountView(),

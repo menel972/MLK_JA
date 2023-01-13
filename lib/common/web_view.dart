@@ -9,7 +9,10 @@ class WebView {
 
   Future<void> showInternet() async {
     try {
-      await launchUrlString(url);
+      await launchUrlString(
+        url,
+        mode: LaunchMode.externalApplication,
+      );
     } on Exception catch (e) {
       debugPrint(e.toString());
     }

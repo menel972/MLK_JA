@@ -38,14 +38,20 @@ class HomeBottomBar extends BottomNavigationBar {
   ValueChanged<int>? get onTap => (int i) => function(i);
 
   @override
-  Color? get backgroundColor => Colors.transparent;
+  Color? get backgroundColor => Colors.white38;
+
+  @override
+  BottomNavigationBarType? get type => BottomNavigationBarType.fixed;
 
   @override
   double? get elevation => 0;
 
   @override
-  Color? get unselectedItemColor => Colors.black;
+  Color? get unselectedItemColor => Colors.black45;
 
   @override
   Color? get selectedItemColor => Colors.black;
+
+  @override
+  bool? get showUnselectedLabels => false;
 }
