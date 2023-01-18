@@ -25,10 +25,6 @@ class HomeBottomBar extends BottomNavigationBar {
             icon: Icon(Icons.feedback),
             label: 'Feedback',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Mon Compte',
-          ),
         ]);
 
   @override

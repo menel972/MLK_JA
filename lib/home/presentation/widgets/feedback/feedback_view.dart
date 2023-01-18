@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
 
 import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_event.dart';
@@ -45,15 +46,11 @@ class FeedbackView extends StatelessWidget {
                 label:
                     'Laisse ton avis : ${lastEvent.name?.toUpperCase() ?? lastEvent.type.value.toUpperCase()}',
                 date: DateFormat('dd / MM / y').format(lastEvent.date),
-                url:
-                    'https://docs.google.com/forms/d/e/1FAIpQLSconCLW95BB6mkK7rF8tHSKLtaA0mM3p_f1zYTXCKK8LnT8pQ/viewform?usp=sf_link'),
+                url: Strings.afterFormUrl),
             const FeedbackButton(label: 'Pose tes questions', url: ''),
-            const FeedbackButton(
-                label: 'Instagram',
-                url: 'https://www.instagram.com/mlkjeunesadultes/'),
-            const FeedbackButton(
-                label: 'Viens servir avec nous !',
-                url: 'https://eglisemlk.fr/vie-de-leglise/devenir-equipier/'),
+            FeedbackButton(label: 'Instagram', url: Strings.instagramUrl),
+            FeedbackButton(
+                label: 'Viens servir avec nous !', url: Strings.mlkWebsiteUrl),
           ][index],
         ),
       ),
