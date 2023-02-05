@@ -23,7 +23,6 @@ class HomeScreen extends HookConsumerWidget {
 
     return BlocConsumer<HomeBloc, ConnectivitySate>(
       listener: (context, state) {
-        print(state.connection);
         if (state.connection == ConnectivityResult.none) {
           context.go(ScreenPaths.connectivityError);
         }
