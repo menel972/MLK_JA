@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
 
 import 'package:mlk_ja/common/size.dart';
 import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
-import 'package:mlk_ja/home/presentation/models/ui_event.dart';
+import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:provider/provider.dart';
 
 class FeedbackView extends StatelessWidget {
@@ -16,42 +17,118 @@ class FeedbackView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UiEvent lastEvent = Provider.of<EventProvider>(context).lastEvent;
+    UiAfterPreview lastEvent = Provider.of<EventProvider>(context).lastEvent;
 
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(
+          vertical: marginXS(context).width,
           horizontal: marginXXS(context).width,
         ),
-        child: ListView.separated(
-          itemCount: 6,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) {
-            if (index >= 1 && index <= 3) {
-              return SizedBox(height: marginXS(context).height);
-            }
-            return SizedBox(height: marginXS(context).width);
-          },
-          itemBuilder: (context, index) => [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Image.asset(
               'assets/images/logo_noir.PNG',
-              height: marginM(context).height,
+              height: marginL(context).width,
             ),
-            const Text(
-              'On veut rester en contact avec toi !',
-              style: TextM(Colors.black, isBold: true),
-              textAlign: TextAlign.center,
+            Expanded(
+              child: Scrollbar(
+                child: ListView.separated(
+                  itemCount: 3,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(height: marginXS(context).width);
+                  },
+                  itemBuilder: (context, index) => [
+                    Card(
+                      elevation: 1,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(color: Colors.black12),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(marginXXS(context).height),
+                        child: Column(
+                          children: [
+                            const Text(
+                              'FAIS PARTI DU CHANGEMENT : ',
+                              style: TextM(isBold: true),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: marginXXS(context).height),
+                            Visibility(
+                              visible: lastEvent.type != AfterType.mlk,
+                              child: FeedbackButton(
+                                  label: 'ON PEUT FAIRE MIEUX ?',
+                                  date:
+                                      '${lastEvent.name?.toUpperCase() ?? lastEvent.type.value.toUpperCase()} - ${DateFormat('dd/MM/y').format(lastEvent.date)}',
+                                  url: Strings.afterFormUrl),
+                            ),
+                            SizedBox(height: marginXXS(context).width),
+                            const FeedbackButton(
+                                label: 'POSE TES QUESTIONS ICI', url: ''),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 1,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(color: Colors.black12),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(marginXXS(context).height),
+                        child: Column(
+                          children: [
+                            const Text(
+                              'RESTE CONNECTÉ :',
+                              style: TextM(isBold: true),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: marginXXS(context).height),
+                            FeedbackButton(
+                              label: 'SUIS NOUS SUR INSTAGRAM',
+                              url: Strings.instagramUrl,
+                            ),
+                            SizedBox(height: marginXXS(context).width),
+                            const FeedbackButton(
+                              label: 'SUIS NOUS SUR WHATSAPP',
+                              url: '',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      elevation: 1,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(color: Colors.black12),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(marginXXS(context).height),
+                        child: Column(
+                          children: [
+                            const Text(
+                              'MLK A BESOIN DE TOI :',
+                              style: TextM(isBold: true),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: marginXXS(context).height),
+                            FeedbackButton(
+                              label: 'IMPLIQUE TOI DANS UN SERVICE',
+                              url: Strings.mlkWebsiteUrl,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ][index],
+                ),
+              ),
             ),
-            FeedbackButton(
-                label:
-                    'Laisse ton avis : ${lastEvent.name?.toUpperCase() ?? lastEvent.type.value.toUpperCase()}',
-                date: DateFormat('dd / MM / y').format(lastEvent.date),
-                url: Strings.afterFormUrl),
-            const FeedbackButton(label: 'Pose tes questions', url: ''),
-            FeedbackButton(label: 'Instagram', url: Strings.instagramUrl),
-            FeedbackButton(
-                label: 'Viens servir avec nous !', url: Strings.mlkWebsiteUrl),
-          ][index],
+          ],
         ),
       ),
     );

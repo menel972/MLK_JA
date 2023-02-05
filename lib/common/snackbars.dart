@@ -8,7 +8,8 @@ class SuccessSnackBar extends SnackBar {
       : super(content: const Center());
 
   @override
-  Widget get content => Text(message, style: const TextS(Colors.white));
+  Widget get content =>
+      Text(message, style: const TextS(textColor: Colors.white));
 
   @override
   Color? get backgroundColor => Colours.success;
@@ -23,7 +24,8 @@ class ErrorSnackBar extends SnackBar {
       : super(content: const Center());
 
   @override
-  Widget get content => Text(message, style: const TextS(Colors.white));
+  Widget get content =>
+      Text(message, style: const TextS(textColor: Colors.white));
 
   @override
   Color? get backgroundColor => Colours.error;

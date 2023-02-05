@@ -2,14 +2,18 @@
 
 import 'dart:async';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
-import 'package:mlk_ja/common/mocks/carousel_items_mock.dart';
+import 'package:intl/intl.dart';
+import 'package:mlk_ja/common/mocks/ui_after_preview_mocks.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/size.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
+import 'package:mlk_ja/common/theme/colours.dart';
+import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:provider/provider.dart';
 
 class CarouselView extends riverpod.ConsumerStatefulWidget {
@@ -34,16 +38,65 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
   @override
   Widget build(BuildContext context) {
     Provider.of<EventProvider>(context, listen: false)
-        .initEvents(carouselItemsMocked);
+        .initEvents(uiAftersPreviewMocked);
 
-    final items = Provider.of<EventProvider>(context).filteredEvents;
+    final items = Provider.of<EventProvider>(context).currentMonthEvents;
 
     return FlutterCarousel.builder(
       itemCount: items.length,
       itemBuilder: (context, index, realIndex) => GestureDetector(
-        onTap: () => context.go(ScreenPaths.after),
-        child: Image.asset(items[index].image ?? items[index].type.image,
-            fit: BoxFit.fill),
+        onTap: () => context.go('${ScreenPaths.after}/${items[index].uid}'),
+        child: Stack(
+          children: [
+            Image.asset(
+              items[index].image ?? items[index].type.image,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              height: double.infinity,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                vertical: marginXS(context).height,
+                horizontal: marginXXS(context).width,
+              ),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black54,
+                    Colors.black45,
+                    Colors.black38,
+                    Colors.black26,
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.center,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const AutoSizeText(
+                    'PRENDS TA PLACE :',
+                    style: TextM(textColor: Colours.white, isBold: true),
+                    maxLines: 1,
+                    minFontSize: 14,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  AutoSizeText(
+                    '${items[index].type.value} - ${DateFormat('MMMM', 'fr_FR').format(DateTime.now())}'
+                        .toUpperCase(),
+                    style: const TextL(textColor: Colours.white, isBold: true),
+                    maxLines: 1,
+                    minFontSize: 20,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       options: Options(context, remote: controller),
     );

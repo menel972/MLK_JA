@@ -3,30 +3,41 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
-import 'package:mlk_ja/home/presentation/models/ui_event.dart';
+import 'package:mlk_ja/common/theme/colours.dart';
+import 'package:mlk_ja/common/theme/text_theme.dart';
+import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 
 class EventCard extends ListTile {
   final BuildContext context;
-  final UiEvent event;
+  final UiAfterPreview event;
 
   const EventCard(this.context, {super.key, required this.event});
 
   @override
-  GestureTapCallback? get onTap => () => context.go(ScreenPaths.after);
+  GestureTapCallback? get onTap =>
+      () => context.go('${ScreenPaths.after}/${event.uid}');
 
   @override
-  Widget? get title => Text(event.name ?? event.type.value);
+  Widget? get title => Text(
+        event.name == null
+            ? event.type.value
+            : '${event.type.value} - ${event.name}',
+        style: const TextS(isBold: true),
+      );
 
   @override
-  Widget? get subtitle => Text(DateFormat('dd / MM / y').format(event.date));
+  Widget? get subtitle => Text(
+        DateFormat('dd/MM/y').format(event.date),
+        style: const TextS(textColor: Colours.grey),
+      );
 
   @override
-  Color? get tileColor => event.type.color.withOpacity(0.2);
+  Color? get tileColor => event.type.color.withOpacity(0.1);
 
   @override
   ShapeBorder? get shape => RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: BorderSide(color: event.type.color.withOpacity(0.7)),
+        side: BorderSide(color: event.type.color.withOpacity(0.2)),
       );
 
   @override

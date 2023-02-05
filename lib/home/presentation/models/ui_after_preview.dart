@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:mlk_ja/common/enums.dart';
 
-class UiEvent extends Equatable {
+class UiAfterPreview extends Equatable {
   final String uid;
   final AfterType type;
   final DateTime date;
@@ -9,7 +9,7 @@ class UiEvent extends Equatable {
   final String? name;
   final String? url;
 
-  const UiEvent({
+  const UiAfterPreview({
     required this.uid,
     required this.type,
     required this.date,

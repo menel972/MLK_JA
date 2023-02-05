@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mlk_ja/after/presentation/after_screen.dart';
+import 'package:mlk_ja/common/loaders/connectivity_loader.dart';
 import 'package:mlk_ja/home/presentation/bloc/home_bloc.dart';
 import 'package:mlk_ja/home/presentation/home_screen.dart';
 
@@ -8,6 +9,7 @@ import 'package:mlk_ja/home/presentation/home_screen.dart';
 class ScreenPaths {
   static const String home = '/';
   static const String after = '/after';
+  static const String connectivityError = '/connectivity';
 }
 
 /// Routing configuration
@@ -23,7 +25,14 @@ GoRouter router = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: ScreenPaths.after,
-    builder: (context, state) => const AfterScreen(),
+    path: '${ScreenPaths.after}/:uid',
+    builder: (context, state) => AfterScreen(state.params['uid']!),
+  ),
+  GoRoute(
+    path: ScreenPaths.connectivityError,
+    builder: (context, state) => BlocProvider(
+      create: (_) => HomeBloc(),
+      child: const ConnectivityLoader(),
+    ),
   ),
 ]);

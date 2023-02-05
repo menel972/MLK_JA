@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Specific [TextStyle]
 ///
@@ -12,7 +13,7 @@ abstract class TextBase extends TextStyle {
   TextDecoration? get decoration => TextDecoration.none;
 
   @override
-  FontWeight? get fontWeight => bold! ? FontWeight.w600 : FontWeight.w400;
+  FontWeight? get fontWeight => bold! ? FontWeight.w700 : FontWeight.w400;
 }
 
 /// Headline style
@@ -24,14 +25,17 @@ class TextL extends TextBase {
   ///
   /// Extends [TextStyle].
   /// fontSize => 22;
-  const TextL(this.textColor, {this.isBold = false}) : super(bold: isBold);
+  const TextL({this.isBold = false, this.textColor = Colors.black})
+      : super(bold: isBold);
 
   @override
   double? get fontSize => 22;
   @override
-  double? get letterSpacing => 0.5;
+  double? get letterSpacing => 1;
   @override
   Color? get color => textColor;
+  @override
+  String? get fontFamily => GoogleFonts.oswald().fontFamily;
 }
 
 /// Subtitle style
@@ -43,14 +47,17 @@ class TextM extends TextBase {
   ///
   /// Extends [TextStyle].
   /// fontSize => 18;
-  const TextM(this.textColor, {this.isBold = false}) : super(bold: isBold);
+  const TextM({this.isBold = false, this.textColor = Colors.black})
+      : super(bold: isBold);
 
   @override
   double? get fontSize => 18;
   @override
-  double? get letterSpacing => 0.5;
+  double? get letterSpacing => 0.8;
   @override
   Color? get color => textColor;
+  @override
+  String? get fontFamily => GoogleFonts.oswald().fontFamily;
 }
 
 /// Basic text style
@@ -62,7 +69,8 @@ class TextS extends TextBase {
   ///
   /// Extends [TextStyle].
   /// fontSize => 14;
-  const TextS(this.textColor, {this.isBold = false}) : super(bold: isBold);
+  const TextS({this.isBold = false, this.textColor = Colors.black})
+      : super(bold: isBold);
 
   @override
   double? get fontSize => 14;
@@ -70,6 +78,8 @@ class TextS extends TextBase {
   double? get letterSpacing => 0.6;
   @override
   Color? get color => textColor;
+  @override
+  String? get fontFamily => GoogleFonts.openSans().fontFamily;
 }
 
 class TextXS extends TextBase {
@@ -80,7 +90,8 @@ class TextXS extends TextBase {
   ///
   /// Extends [TextStyle].
   /// fontSize => 12;
-  const TextXS(this.textColor, {this.isBold = false}) : super(bold: isBold);
+  const TextXS({this.isBold = false, this.textColor = Colors.black})
+      : super(bold: isBold);
 
   @override
   double? get fontSize => 12;
@@ -88,4 +99,6 @@ class TextXS extends TextBase {
   double? get letterSpacing => 0.5;
   @override
   Color? get color => textColor;
+  @override
+  String? get fontFamily => GoogleFonts.openSans().fontFamily;
 }

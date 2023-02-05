@@ -1,15 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/common/web_view.dart';
 
 class SubscriptionButton extends GestureDetector {
   final BuildContext context;
-  final String label;
+  final String? label;
   final String? url;
 
-  SubscriptionButton(this.context, {super.key, required this.label, this.url});
+  SubscriptionButton(this.context,
+      {super.key, this.label = 'S\'inscrire', this.url});
 
   @override
   GestureTapCallback? get onTap =>
@@ -18,13 +20,46 @@ class SubscriptionButton extends GestureDetector {
   @override
   Widget? get child => Container(
         decoration: BoxDecoration(
-          color: url != null ? Colors.black54 : Colors.black38,
+          color: url != null ? Colours.grey : Colors.black38,
           borderRadius: BorderRadius.circular(5),
         ),
         padding: EdgeInsets.all(marginXXS(context).width),
         child: AutoSizeText(
+          label!,
+          style: TextXS(textColor: url != null ? Colors.white : Colors.white60),
+          minFontSize: 10,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      );
+}
+
+class AfterInfoButton extends GestureDetector {
+  final BuildContext context;
+  final String label;
+  final String? url;
+
+  AfterInfoButton(this.context,
+      {super.key, this.label = 'RÉSERVE TA PLACE', this.url});
+
+  @override
+  GestureTapCallback? get onTap =>
+      () => url != null ? WebView(url!).showInternet() : null;
+
+  @override
+  Widget? get child => Container(
+        decoration: BoxDecoration(
+          color: url != null ? Colors.black : Colours.grey,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.all(marginXXS(context).height),
+        margin: EdgeInsets.symmetric(vertical: marginXXS(context).height),
+        child: AutoSizeText(
           label,
-          style: TextXS(url != null ? Colors.white : Colors.white60),
+          style: TextS(
+              textColor: url != null ? Colors.white : Colors.white60,
+              isBold: true),
+          textAlign: TextAlign.center,
           minFontSize: 10,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -48,22 +83,32 @@ class FeedbackButton extends ListTile {
   GestureTapCallback? get onTap => () => WebView(url).showInternet();
 
   @override
-  Widget? get title => Text(label,
-      style: const TextStyle(color: Colors.white), textAlign: TextAlign.center);
+  Widget? get title => AutoSizeText(
+        label,
+        style: const TextM(textColor: Colors.white),
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        minFontSize: 16,
+      );
 
   @override
   Widget? get subtitle => date != null
-      ? Text(date!,
-          style: const TextStyle(color: Colors.white),
-          textAlign: TextAlign.center)
+      ? AutoSizeText(
+          date!,
+          style: const TextS(textColor: Colors.white70),
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          minFontSize: 12,
+          overflow: TextOverflow.ellipsis,
+        )
       : null;
 
   @override
-  Color? get tileColor => Colors.black54;
+  Color? get tileColor => Colors.black;
 
   @override
   ShapeBorder? get shape => RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-        side: const BorderSide(color: Colors.black87),
+        borderRadius: BorderRadius.circular(15),
       );
 }
