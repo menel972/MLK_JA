@@ -1,6 +1,7 @@
 import 'package:map_launcher/map_launcher.dart';
 import 'package:mlk_ja/after/presentation/models/ui_after.dart';
 import 'package:mlk_ja/common/enums.dart';
+import 'package:mlk_ja/common/strings.dart';
 
 List<UiAfter> uiAfterMocked = [
   // January
@@ -22,8 +23,10 @@ List<UiAfter> uiAfterMocked = [
     type: AfterType.talk,
     guests: const [
       UiGuest('MLK JA', url: 'https://www.instagram.com/mlkjeunesadultes/'),
-      UiGuest('Charlène Abienso',
-          url: 'https://charleneabienso.com/inscription469665801617890475848')
+      UiGuest(
+        'Charlène Abienso',
+        url: 'https://charleneabienso.com/inscription469665801617890475848',
+      )
     ],
     date: DateTime.utc(2023, 1, 14, 19, 45),
     coords: Coords(48.76827, 2.45820),
@@ -35,8 +38,10 @@ List<UiAfter> uiAfterMocked = [
     uid: '3',
     type: AfterType.mlk,
     guests: const [
-      UiGuest('Glorious Louange',
-          url: 'https://instagram.com/glorious_louange?igshid=YmMyMTA2M2Y=')
+      UiGuest(
+        'Glorious Louange',
+        url: 'https://instagram.com/glorious_louange?igshid=YmMyMTA2M2Y=',
+      )
     ],
     date: DateTime.utc(2023, 1, 21, 20, 30),
     coords: Coords(48.76827, 2.45820),
@@ -52,8 +57,10 @@ List<UiAfter> uiAfterMocked = [
     type: AfterType.open,
     guests: const [
       UiGuest('MLK JA', url: 'https://www.instagram.com/mlkjeunesadultes/'),
-      UiGuest('R\'amen Comedy Club',
-          url: 'https://www.instagram.com/ramencomedyclub/'),
+      UiGuest(
+        'R\'amen Comedy Club',
+        url: 'https://www.instagram.com/ramencomedyclub/',
+      ),
     ],
     date: DateTime.utc(2023, 1, 28, 19, 45),
     coords: Coords(48.76827, 2.45820),
@@ -83,7 +90,8 @@ List<UiAfter> uiAfterMocked = [
     ],
     date: DateTime.utc(2023, 2, 11, 19, 45),
     coords: Coords(48.76827, 2.45820),
-    name: 'Couple / Célibat',
+    name: 'Et si on parlait couple',
+    image: '${Strings.afterImagesPath}/AFTER_V2.jpg',
   ),
   UiAfter(
     uid: '7',

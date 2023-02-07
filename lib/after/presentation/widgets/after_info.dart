@@ -34,7 +34,7 @@ class AfterInfo extends StatelessWidget {
       ),
       child: ListView.separated(
         itemCount: 9 + after.guests.length,
-        separatorBuilder: (context, index) {
+        separatorBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return SizedBox(height: Dimensions.xs(context).width);
           }
@@ -49,7 +49,7 @@ class AfterInfo extends StatelessWidget {
           }
           return SizedBox(height: Dimensions.xxs(context).width);
         },
-        itemBuilder: (context, index) => [
+        itemBuilder: (BuildContext context, int index) => [
           AutoSizeText(
             after.name == null
                 ? after.type.value
@@ -67,36 +67,39 @@ class AfterInfo extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: Font.s(color: Theme.of(context).colorScheme.secondary),
           ),
-          ...after.guests.map((guest) => GestureDetector(
-                onTap: () => guest.url != null
-                    ? WebView(guest.url!).showInternet()
-                    : null,
-                child: Row(
-                  children: [
-                    Text(
-                      '${guest.name} • ',
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 0.6,
-                        color: Theme.of(context).colorScheme.secondary,
-                        decoration: TextDecoration.underline,
-                      ),
+          ...after.guests.map(
+            (UiGuest guest) => GestureDetector(
+              onTap: () =>
+                  guest.url != null ? WebView(guest.url!).showInternet() : null,
+              child: Row(
+                children: [
+                  Text(
+                    '${guest.name} • ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      letterSpacing: 0.6,
+                      color: Theme.of(context).colorScheme.secondary,
+                      decoration: TextDecoration.underline,
                     ),
-                    Text(
-                      guest.url != null ? ' Suivre' : '',
-                      style: Font.s(
-                        color: Theme.of(context).colorScheme.outline,
-                        bold: true,
-                      ),
+                  ),
+                  Text(
+                    guest.url != null ? ' Suivre' : '',
+                    style: Font.s(
+                      color: Theme.of(context).colorScheme.outline,
+                      bold: true,
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                ],
+              ),
+            ),
+          ),
           AfterInfoButton(context, url: after.url),
           Text(
             'Où et quand',
             style: Font.m(
-                color: Theme.of(context).colorScheme.primary, bold: true),
+              color: Theme.of(context).colorScheme.primary,
+              bold: true,
+            ),
           ),
           AfterInfoTile(
             context,
@@ -116,7 +119,9 @@ class AfterInfo extends StatelessWidget {
           Text(
             'À propos de cet évènement',
             style: Font.m(
-                color: Theme.of(context).colorScheme.primary, bold: true),
+              color: Theme.of(context).colorScheme.primary,
+              bold: true,
+            ),
           ),
           ListTile(
             leading:
@@ -124,7 +129,9 @@ class AfterInfo extends StatelessWidget {
             title: Text(
               durationFormat(after.duration),
               style: Font.s(
-                  color: Theme.of(context).colorScheme.primary, bold: true),
+                color: Theme.of(context).colorScheme.primary,
+                bold: true,
+              ),
             ),
             contentPadding: const EdgeInsets.all(0),
           ),

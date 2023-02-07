@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mlk_ja/common/theme/bottom_bar_theme.dart';
 import 'package:mlk_ja/common/theme/app_colors.dart';
+import 'package:mlk_ja/common/theme/bottom_bar_theme.dart';
 
 /// Defines UI light theme of the app
 ThemeData lightTheme = ThemeData(

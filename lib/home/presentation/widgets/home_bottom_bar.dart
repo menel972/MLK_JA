@@ -8,28 +8,32 @@ class HomeBottomBar extends BottomNavigationBar {
     super.key,
     required this.index,
     required this.function,
-  }) : super(items: [
-          BottomNavigationBarItem(
-            icon: Icon(index == 0
-                ? Icons.view_carousel
-                : Icons.view_carousel_outlined),
-            label: 'Carousel',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(index == 1
-                ? Icons.calendar_today
-                : Icons.calendar_today_outlined),
-            label: 'Calendrier',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(index == 2 ? Icons.feedback : Icons.feedback_outlined),
-            label: 'Feedback',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(index == 3 ? Icons.person : Icons.person_outline),
-            label: 'Staff',
-          ),
-        ]);
+  }) : super(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                index == 0 ? Icons.view_carousel : Icons.view_carousel_outlined,
+              ),
+              label: 'Carousel',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                index == 1
+                    ? Icons.calendar_today
+                    : Icons.calendar_today_outlined,
+              ),
+              label: 'Calendrier',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(index == 2 ? Icons.feedback : Icons.feedback_outlined),
+              label: 'Feedback',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(index == 3 ? Icons.person : Icons.person_outline),
+              label: 'Staff',
+            ),
+          ],
+        );
 
   @override
   int get currentIndex => index;

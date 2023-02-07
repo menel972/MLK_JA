@@ -7,7 +7,9 @@ import 'package:mlk_ja/common/connectivity_service.dart';
 class HomeBloc extends Cubit<ConnectivitySate> {
   HomeBloc() : super(const ConnectivitySate()) {
     initConnectionState();
-    ConnectivityService().listenConnectionChanged().onData((changes) {
+    ConnectivityService()
+        .listenConnectionChanged()
+        .onData((ConnectivityResult changes) {
       connectionChanged(changes);
     });
   }
@@ -17,8 +19,11 @@ class HomeBloc extends Cubit<ConnectivitySate> {
   void connectionChanged(ConnectivityResult changes) =>
       emit(state.copyWith(connection: changes));
 
-  Future<void> initConnectionState() async => emit(state.copyWith(
-      connection: await ConnectivityService().currentConnectivity()));
+  Future<void> initConnectionState() async => emit(
+        state.copyWith(
+          connection: await ConnectivityService().currentConnectivity(),
+        ),
+      );
 }
 
 class ConnectivitySate extends Equatable {

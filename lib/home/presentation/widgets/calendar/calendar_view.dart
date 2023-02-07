@@ -24,18 +24,22 @@ class CalendarView extends riverpod.HookConsumerWidget {
     List<UiAfterPreview> events = Provider.of<EventProvider>(context).events;
 
     List<UiAfterPreview> getEvent(DateTime day, AfterType? filter) => events
-        .where((event) =>
-            event.date.subtract(Duration(
-                  hours: event.date.hour,
-                  minutes: event.date.minute,
-                )) ==
-                day &&
-            event.type == (filter ?? event.type))
+        .where(
+          (UiAfterPreview event) =>
+              event.date.subtract(
+                    Duration(
+                      hours: event.date.hour,
+                      minutes: event.date.minute,
+                    ),
+                  ) ==
+                  day &&
+              event.type == (filter ?? event.type),
+        )
         .toList();
 
     return BlocConsumer<CalendarBloc, CalendarState>(
-      listener: (context, state) {},
-      builder: (context, state) => Padding(
+      listener: (BuildContext context, CalendarState state) {},
+      builder: (BuildContext context, CalendarState state) => Padding(
         padding: EdgeInsets.only(
           top: Dimensions.xs(context).height,
           left: Dimensions.xxs(context).height,
@@ -49,10 +53,11 @@ class CalendarView extends riverpod.HookConsumerWidget {
                   firstDay: DateTime.utc(2021, 1, 1),
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: state.date,
-                  onDaySelected: (selectedDay, focusedDay) =>
+                  onDaySelected: (DateTime selectedDay, DateTime focusedDay) =>
                       context.read<CalendarBloc>().onDateSelected(selectedDay),
                   startingDayOfWeek: StartingDayOfWeek.monday,
-                  selectedDayPredicate: (day) => isSameDay(state.date, day),
+                  selectedDayPredicate: (DateTime day) =>
+                      isSameDay(state.date, day),
                   weekendDays: const [
                     DateTime.monday,
                     DateTime.tuesday,
@@ -64,13 +69,15 @@ class CalendarView extends riverpod.HookConsumerWidget {
                     outsideDaysVisible: false,
                     todayDecoration: BoxDecoration(
                       border: Border.all(
-                          color: Theme.of(context).colorScheme.tertiary),
+                        color: Theme.of(context).colorScheme.tertiary,
+                      ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     selectedDecoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.tertiary,
                       border: Border.all(
-                          color: Theme.of(context).colorScheme.tertiary),
+                        color: Theme.of(context).colorScheme.tertiary,
+                      ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     markerDecoration: BoxDecoration(
@@ -84,34 +91,37 @@ class CalendarView extends riverpod.HookConsumerWidget {
                     defaultTextStyle:
                         Font.s(color: Theme.of(context).colorScheme.primary),
                   ),
-                  eventLoader: (day) => getEvent(day, state.type),
+                  eventLoader: (DateTime day) => getEvent(day, state.type),
                   availableCalendarFormats: const {
                     CalendarFormat.month: 'Month'
                   },
                   calendarBuilders: CalendarBuilders(
-                    headerTitleBuilder: (context, day) {
+                    headerTitleBuilder: (BuildContext context, DateTime day) {
                       return Text(
                         DateFormat('MMMM y', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
                         style: Font.l(
-                            color: Theme.of(context).colorScheme.primary,
-                            bold: true),
+                          color: Theme.of(context).colorScheme.primary,
+                          bold: true,
+                        ),
                       );
                     },
-                    dowBuilder: (context, day) {
+                    dowBuilder: (BuildContext context, DateTime day) {
                       return Text(
                         DateFormat('E', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
                         style: Font.s(
-                            color: Theme.of(context).colorScheme.secondary,
-                            bold: true),
+                          color: Theme.of(context).colorScheme.secondary,
+                          bold: true,
+                        ),
                       );
                     },
                   ),
                 ),
-                Text('Flitrer :',
-                    style:
-                        Font.s(color: Theme.of(context).colorScheme.secondary)),
+                Text(
+                  'Flitrer :',
+                  style: Font.s(color: Theme.of(context).colorScheme.secondary),
+                ),
                 SizedBox(
                   height: Dimensions.screen(context).width * 0.15,
                   child: EventFilter(
@@ -126,11 +136,13 @@ class CalendarView extends riverpod.HookConsumerWidget {
               ] +
               (getEvent(state.date, state.type).isNotEmpty
                   ? getEvent(state.date, state.type)
-                      .map((event) => Padding(
-                            padding:
-                                EdgeInsets.all(Dimensions.xxs(context).width),
-                            child: EventCard(context, event: event),
-                          ))
+                      .map(
+                        (UiAfterPreview event) => Padding(
+                          padding:
+                              EdgeInsets.all(Dimensions.xxs(context).width),
+                          child: EventCard(context, event: event),
+                        ),
+                      )
                       .toList()
                   : [
                       Padding(

@@ -14,35 +14,38 @@ class ConnectivityLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeBloc, ConnectivitySate>(listener: (context, state) {
-      if (state.connection != ConnectivityResult.none) {
-        context.go(ScreenPaths.home);
-      }
-    }, builder: (context, state) {
-      return Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              MediaQuery.platformBrightnessOf(context) == Brightness.light
-                  ? '${Strings.logoImagesPath}/logo_noir.PNG'
-                  : '${Strings.logoImagesPath}/logo_blanc.png',
-              height: Dimensions.l(context).height,
-            ),
-            AutoSizeText(
-              'Cette application a besoin d\'internet pour fonctonner.',
-              style: Font.m(color: Theme.of(context).colorScheme.primary),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: Dimensions.xxs(context).height),
-            AutoSizeText(
-              'Vérifie ta connexion.',
-              style: Font.l(color: Theme.of(context).colorScheme.primary),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      );
-    });
+    return BlocConsumer<HomeBloc, ConnectivitySate>(
+      listener: (BuildContext context, ConnectivitySate state) {
+        if (state.connection != ConnectivityResult.none) {
+          context.go(ScreenPaths.home);
+        }
+      },
+      builder: (BuildContext context, ConnectivitySate state) {
+        return Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                MediaQuery.platformBrightnessOf(context) == Brightness.light
+                    ? '${Strings.logoImagesPath}/logo_noir.PNG'
+                    : '${Strings.logoImagesPath}/logo_blanc.png',
+                height: Dimensions.l(context).height,
+              ),
+              AutoSizeText(
+                'Cette application a besoin d\'internet pour fonctonner.',
+                style: Font.m(color: Theme.of(context).colorScheme.primary),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: Dimensions.xxs(context).height),
+              AutoSizeText(
+                'Vérifie ta connexion.',
+                style: Font.l(color: Theme.of(context).colorScheme.primary),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mlk_ja/after/presentation/after_screen.dart';
@@ -16,23 +17,26 @@ class ScreenPaths {
 ///
 /// router lists specifies the top-level routes for the app.
 /// It allows navigation using [ScreenPaths].
-GoRouter router = GoRouter(routes: [
-  GoRoute(
-    path: ScreenPaths.home,
-    builder: (context, state) => BlocProvider(
-      create: (_) => HomeBloc(),
-      child: const HomeScreen(),
+GoRouter router = GoRouter(
+  routes: [
+    GoRoute(
+      path: ScreenPaths.home,
+      builder: (BuildContext context, GoRouterState state) => BlocProvider(
+        create: (_) => HomeBloc(),
+        child: const HomeScreen(),
+      ),
     ),
-  ),
-  GoRoute(
-    path: '${ScreenPaths.after}/:uid',
-    builder: (context, state) => AfterScreen(state.params['uid']!),
-  ),
-  GoRoute(
-    path: ScreenPaths.connectivityError,
-    builder: (context, state) => BlocProvider(
-      create: (_) => HomeBloc(),
-      child: const ConnectivityLoader(),
+    GoRoute(
+      path: '${ScreenPaths.after}/:uid',
+      builder: (BuildContext context, GoRouterState state) =>
+          AfterScreen(state.params['uid']!),
     ),
-  ),
-]);
+    GoRoute(
+      path: ScreenPaths.connectivityError,
+      builder: (BuildContext context, GoRouterState state) => BlocProvider(
+        create: (_) => HomeBloc(),
+        child: const ConnectivityLoader(),
+      ),
+    ),
+  ],
+);
