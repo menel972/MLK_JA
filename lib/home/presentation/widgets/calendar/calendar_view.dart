@@ -77,8 +77,12 @@ class CalendarView extends riverpod.HookConsumerWidget {
                       color: Theme.of(context).colorScheme.error,
                       shape: BoxShape.circle,
                     ),
-                    weekendTextStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.tertiary),
+                    weekendTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.tertiary),
+                    todayTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.tertiary),
+                    defaultTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.primary),
                   ),
                   eventLoader: (day) => getEvent(day, state.type),
                   availableCalendarFormats: const {
