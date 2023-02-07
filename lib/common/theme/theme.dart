@@ -13,7 +13,7 @@ ThemeData lightTheme = ThemeData(
 /// Defines UI dark theme of the app
 ThemeData darkTheme = ThemeData.dark().copyWith(
   useMaterial3: true,
-  scaffoldBackgroundColor: const Color(0x000b0d0f),
+  scaffoldBackgroundColor: const Color(0xff0b0d0f),
   colorScheme: AppColors.dark(),
   bottomNavigationBarTheme: BottomBarTheme.dark(),
 );

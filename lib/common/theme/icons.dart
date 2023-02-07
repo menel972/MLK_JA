@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mlk_ja/common/size.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 
 class AfterInfoIcon extends Container {
   final BuildContext context;
@@ -18,10 +17,11 @@ class AfterInfoIcon extends Container {
   Decoration? get decoration => BoxDecoration(
         border: Border.all(
           width: 1,
-          color: Colors.black54,
+          color:
+              isRounded ? Theme.of(context).colorScheme.primary : Colors.black,
         ),
         borderRadius: BorderRadius.circular(isRounded ? 100 : 10),
-        color: isRounded ? Colors.transparent : Colours.grey.withOpacity(0.4),
+        color: isRounded ? Colors.transparent : Colors.grey.withOpacity(0.4),
       );
 
   @override
@@ -30,6 +30,6 @@ class AfterInfoIcon extends Container {
   @override
   Widget? get child => Icon(
         icon,
-        color: Colors.black87,
+        color: isRounded ? Theme.of(context).colorScheme.primary : Colors.black,
       );
 }

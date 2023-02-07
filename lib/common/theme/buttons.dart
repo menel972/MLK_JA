@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mlk_ja/common/size.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/common/web_view.dart';
 
@@ -54,7 +53,9 @@ class AfterInfoButton extends GestureDetector {
   @override
   Widget? get child => Container(
         decoration: BoxDecoration(
-          color: url != null ? Colors.black : Colours.grey,
+          color: url != null
+              ? Colors.black
+              : Theme.of(context).colorScheme.onTertiary,
           borderRadius: BorderRadius.circular(10),
         ),
         padding: EdgeInsets.all(marginXXS(context).height),
@@ -62,7 +63,7 @@ class AfterInfoButton extends GestureDetector {
         child: AutoSizeText(
           label,
           style: TextS(
-              textColor: url != null ? Colors.white : Colors.white60,
+              textColor: url != null ? Colors.white : Colors.white38,
               isBold: true),
           textAlign: TextAlign.center,
           minFontSize: 10,

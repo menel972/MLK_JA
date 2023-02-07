@@ -12,7 +12,6 @@ import 'package:mlk_ja/common/mocks/ui_after_preview_mocks.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/size.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -77,9 +76,11 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const AutoSizeText(
+                  AutoSizeText(
                     'PRENDS TA PLACE :',
-                    style: TextM(textColor: Colours.white, isBold: true),
+                    style: TextM(
+                        textColor: Theme.of(context).colorScheme.secondary,
+                        isBold: true),
                     maxLines: 1,
                     minFontSize: 14,
                     overflow: TextOverflow.ellipsis,
@@ -87,7 +88,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                   AutoSizeText(
                     '${items[index].type.value} - ${DateFormat('MMMM', 'fr_FR').format(DateTime.now())}'
                         .toUpperCase(),
-                    style: const TextL(textColor: Colours.white, isBold: true),
+                    style: TextL(
+                        textColor: Theme.of(context).colorScheme.secondary,
+                        isBold: true),
                     maxLines: 1,
                     minFontSize: 20,
                     overflow: TextOverflow.ellipsis,
