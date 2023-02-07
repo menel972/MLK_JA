@@ -45,7 +45,7 @@ List<UiAfter> uiAfterMocked = [
     name: 'Fête de l\'unité des chrétiens',
     duration: const Duration(hours: 3, minutes: 30),
     url: 'https://www.billetweb.fr/fete-de-lunite-des-chretiens',
-    image: 'assets/images/IMG_6057.JPG',
+    image: 'assets/images/afters/IMG_6057.JPG',
   ),
   UiAfter(
     uid: '4',
@@ -58,7 +58,7 @@ List<UiAfter> uiAfterMocked = [
     date: DateTime.utc(2023, 1, 28, 19, 45),
     coords: Coords(48.76827, 2.45820),
     name: 'Comedy Club',
-    image: 'assets/images/COMEDY_CLUB.jpg',
+    image: 'assets/images/afters/COMEDY_CLUB.jpg',
     url:
         'https://www.eventbrite.fr/e/billets-after-jeunes-adultes-samedi-a-20h00-28-janvier-2023-521984428477?aff=ebdsoporgprofile',
   ),
@@ -73,7 +73,7 @@ List<UiAfter> uiAfterMocked = [
     date: DateTime.utc(2023, 2, 4, 19, 45),
     coords: Coords(48.76827, 2.45820),
     name: 'Free Worship',
-    image: 'assets/images/visuel-freeworship-1250x625.jpg',
+    image: 'assets/images/afters/visuel-freeworship-1250x625.jpg',
   ),
   UiAfter(
     uid: '6',
@@ -94,7 +94,7 @@ List<UiAfter> uiAfterMocked = [
     date: DateTime.utc(2023, 2, 18, 19, 45),
     coords: Coords(48.76827, 2.45820),
     name: 'Ce soir on se rencontre !',
-    image: 'assets/images/vendredi_tout_est_permis_avec_arthur.jpg',
+    image: 'assets/images/afters/vendredi_tout_est_permis_avec_arthur.jpg',
   ),
   UiAfter(
     uid: '8',
@@ -135,7 +135,7 @@ List<UiAfter> uiAfterMocked = [
     date: DateTime.utc(2023, 3, 18, 19, 45),
     coords: Coords(48.76827, 2.45820),
     name: 'Famille en Or part.2',
-    image: 'assets/images/Visuel After.png',
+    image: 'assets/images/afters/Visuel After.png',
   ),
   UiAfter(
     uid: '12',

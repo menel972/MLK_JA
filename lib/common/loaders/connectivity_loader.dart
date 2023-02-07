@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/bloc/home_bloc.dart';
 
@@ -24,7 +25,9 @@ class ConnectivityLoader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo_noir.PNG',
+              MediaQuery.platformBrightnessOf(context) == Brightness.light
+                  ? '${Strings.logoImagesPath}/logo_noir.PNG'
+                  : '${Strings.logoImagesPath}/logo_blanc.png',
               height: marginL(context).height,
             ),
             const AutoSizeText(
