@@ -5,7 +5,7 @@ import 'package:mlk_ja/after/presentation/models/ui_after.dart';
 import 'package:mlk_ja/after/presentation/widgets/after_info.dart';
 import 'package:mlk_ja/common/mocks/ui_after_mocks.dart';
 import 'package:mlk_ja/common/router.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 
 class AfterScreen extends HookConsumerWidget {
   final String uid;
@@ -30,16 +30,16 @@ class AfterScreen extends HookConsumerWidget {
               top: 0,
               child: Image.asset(
                 after.image ?? after.type.image,
-                height: screen(context).height * 0.35,
-                width: screen(context).width,
+                height: Dimensions.screen(context).height * 0.35,
+                width: Dimensions.screen(context).width,
                 fit: BoxFit.cover,
               ),
             ),
             Positioned(
               top: 0,
               child: Container(
-                height: screen(context).height * 0.35,
-                width: screen(context).width,
+                height: Dimensions.screen(context).height * 0.35,
+                width: Dimensions.screen(context).width,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -54,7 +54,7 @@ class AfterScreen extends HookConsumerWidget {
               ),
             ),
             Positioned(
-              top: marginXS(context).height,
+              top: Dimensions.xs(context).height,
               child: GestureDetector(
                 onTap: () => context.go(ScreenPaths.home),
                 child: Container(
@@ -73,7 +73,7 @@ class AfterScreen extends HookConsumerWidget {
                     ],
                     color: Colors.white12,
                   ),
-                  padding: EdgeInsets.all(marginXXS(context).width),
+                  padding: EdgeInsets.all(Dimensions.xxs(context).width),
                   child: const Icon(
                     Icons.keyboard_arrow_down,
                     color: Colors.white,

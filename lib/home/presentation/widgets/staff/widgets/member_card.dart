@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_staff_member.dart';
@@ -24,7 +24,7 @@ class MemberCard extends Card {
                     ? '${Strings.logoImagesPath}/logo_noir.PNG'
                     : '${Strings.logoImagesPath}/logo_blanc.png'),
             fit: BoxFit.cover,
-            height: screen(context).height * 0.2,
+            height: Dimensions.screen(context).height * 0.2,
           ),
           Container(
             height: double.infinity,

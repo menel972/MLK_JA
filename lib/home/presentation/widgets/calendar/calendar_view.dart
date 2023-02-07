@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
@@ -37,9 +37,9 @@ class CalendarView extends riverpod.HookConsumerWidget {
       listener: (context, state) {},
       builder: (context, state) => Padding(
         padding: EdgeInsets.only(
-          top: marginXS(context).height,
-          left: marginXXS(context).height,
-          right: marginXXS(context).height,
+          top: Dimensions.xs(context).height,
+          left: Dimensions.xxs(context).height,
+          right: Dimensions.xxs(context).height,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -109,7 +109,7 @@ class CalendarView extends riverpod.HookConsumerWidget {
                     style:
                         Font.s(color: Theme.of(context).colorScheme.secondary)),
                 SizedBox(
-                  height: screen(context).width * 0.15,
+                  height: Dimensions.screen(context).width * 0.15,
                   child: EventFilter(
                     context.read<CalendarBloc>().onFilterSelected,
                     state.type,
@@ -123,13 +123,14 @@ class CalendarView extends riverpod.HookConsumerWidget {
               (getEvent(state.date, state.type).isNotEmpty
                   ? getEvent(state.date, state.type)
                       .map((event) => Padding(
-                            padding: EdgeInsets.all(marginXXS(context).width),
+                            padding:
+                                EdgeInsets.all(Dimensions.xxs(context).width),
                             child: EventCard(context, event: event),
                           ))
                       .toList()
                   : [
                       Padding(
-                        padding: EdgeInsets.all(marginXXS(context).height),
+                        padding: EdgeInsets.all(Dimensions.xxs(context).height),
                         child: const Text('Aucun évènement'),
                       )
                     ]),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 
 class AfterInfoIcon extends Container {
   final BuildContext context;
@@ -25,7 +25,8 @@ class AfterInfoIcon extends Container {
       );
 
   @override
-  EdgeInsetsGeometry? get padding => EdgeInsets.all(marginXXS(context).width);
+  EdgeInsetsGeometry? get padding =>
+      EdgeInsets.all(Dimensions.xxs(context).width);
 
   @override
   Widget? get child => Icon(

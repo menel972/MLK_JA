@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/common/web_view.dart';
 
@@ -24,7 +24,7 @@ class SubscriptionButton extends GestureDetector {
               : Theme.of(context).colorScheme.onTertiary,
           borderRadius: BorderRadius.circular(5),
         ),
-        padding: EdgeInsets.all(marginXXS(context).width),
+        padding: EdgeInsets.all(Dimensions.xxs(context).width),
         child: AutoSizeText(
           label,
           style: Font.xs(
@@ -58,8 +58,8 @@ class AfterInfoButton extends GestureDetector {
               : Theme.of(context).colorScheme.onTertiary,
           borderRadius: BorderRadius.circular(10),
         ),
-        padding: EdgeInsets.all(marginXXS(context).height),
-        margin: EdgeInsets.symmetric(vertical: marginXXS(context).height),
+        padding: EdgeInsets.all(Dimensions.xxs(context).height),
+        margin: EdgeInsets.symmetric(vertical: Dimensions.xxs(context).height),
         child: AutoSizeText(
           label,
           style: Font.s(

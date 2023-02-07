@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/after/presentation/models/ui_after.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
 import 'package:mlk_ja/common/theme/icons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
@@ -25,9 +25,9 @@ class AfterInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: marginXS(context).width),
-      height: screen(context).height * 0.7,
-      width: screen(context).width,
+      padding: EdgeInsets.symmetric(horizontal: Dimensions.xs(context).width),
+      height: Dimensions.screen(context).height * 0.7,
+      width: Dimensions.screen(context).width,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
@@ -36,18 +36,18 @@ class AfterInfo extends StatelessWidget {
         itemCount: 9 + after.guests.length,
         separatorBuilder: (context, index) {
           if (index == 0) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 6 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 5 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 3 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
-          return SizedBox(height: marginXXS(context).width);
+          return SizedBox(height: Dimensions.xxs(context).width);
         },
         itemBuilder: (context, index) => [
           AutoSizeText(
