@@ -7,8 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-import 'package:mlk_ja/common/size.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
@@ -38,9 +37,9 @@ class CalendarView extends riverpod.HookConsumerWidget {
       listener: (context, state) {},
       builder: (context, state) => Padding(
         padding: EdgeInsets.only(
-          top: marginXS(context).height,
-          left: marginXXS(context).height,
-          right: marginXXS(context).height,
+          top: Dimensions.xs(context).height,
+          left: Dimensions.xxs(context).height,
+          right: Dimensions.xxs(context).height,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,9 +52,7 @@ class CalendarView extends riverpod.HookConsumerWidget {
                   onDaySelected: (selectedDay, focusedDay) =>
                       context.read<CalendarBloc>().onDateSelected(selectedDay),
                   startingDayOfWeek: StartingDayOfWeek.monday,
-                  selectedDayPredicate: (day) {
-                    return isSameDay(state.date, day);
-                  },
+                  selectedDayPredicate: (day) => isSameDay(state.date, day),
                   weekendDays: const [
                     DateTime.monday,
                     DateTime.tuesday,
@@ -66,21 +63,26 @@ class CalendarView extends riverpod.HookConsumerWidget {
                   calendarStyle: CalendarStyle(
                     outsideDaysVisible: false,
                     todayDecoration: BoxDecoration(
-                      border: Border.all(color: Colors.black38),
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.tertiary),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     selectedDecoration: BoxDecoration(
-                      color: Colors.black38,
-                      border: Border.all(color: Colors.black38),
+                      color: Theme.of(context).colorScheme.tertiary,
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.tertiary),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     markerDecoration: BoxDecoration(
-                      color: Colors.red.shade300,
+                      color: Theme.of(context).colorScheme.error,
                       shape: BoxShape.circle,
                     ),
-                    defaultTextStyle: const TextStyle(color: Colors.black),
-                    weekendTextStyle: const TextStyle(color: Colours.grey),
-                    todayTextStyle: const TextStyle(color: Colors.black),
+                    weekendTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.tertiary),
+                    todayTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.tertiary),
+                    defaultTextStyle:
+                        Font.s(color: Theme.of(context).colorScheme.primary),
                   ),
                   eventLoader: (day) => getEvent(day, state.type),
                   availableCalendarFormats: const {
@@ -91,34 +93,48 @@ class CalendarView extends riverpod.HookConsumerWidget {
                       return Text(
                         DateFormat('MMMM y', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
-                        style: const TextL(isBold: true),
+                        style: Font.l(
+                            color: Theme.of(context).colorScheme.primary,
+                            bold: true),
+                      );
+                    },
+                    dowBuilder: (context, day) {
+                      return Text(
+                        DateFormat('E', 'fr_FR').format(day).toTitleCase(),
+                        textAlign: TextAlign.center,
+                        style: Font.s(
+                            color: Theme.of(context).colorScheme.secondary,
+                            bold: true),
                       );
                     },
                   ),
                 ),
-                const Text('Flitrer :', style: TextS(textColor: Colours.grey)),
+                Text('Flitrer :',
+                    style:
+                        Font.s(color: Theme.of(context).colorScheme.secondary)),
                 SizedBox(
-                  height: screen(context).width * 0.15,
+                  height: Dimensions.screen(context).width * 0.15,
                   child: EventFilter(
                     context.read<CalendarBloc>().onFilterSelected,
                     state.type,
                   ),
                 ),
-                const Divider(
-                  color: Colors.black,
+                Divider(
+                  color: Theme.of(context).colorScheme.primary,
                   height: 5,
                 ),
               ] +
               (getEvent(state.date, state.type).isNotEmpty
                   ? getEvent(state.date, state.type)
                       .map((event) => Padding(
-                            padding: EdgeInsets.all(marginXXS(context).width),
+                            padding:
+                                EdgeInsets.all(Dimensions.xxs(context).width),
                             child: EventCard(context, event: event),
                           ))
                       .toList()
                   : [
                       Padding(
-                        padding: EdgeInsets.all(marginXXS(context).height),
+                        padding: EdgeInsets.all(Dimensions.xxs(context).height),
                         child: const Text('Aucun évènement'),
                       )
                     ]),

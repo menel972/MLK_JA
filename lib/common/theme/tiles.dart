@@ -1,7 +1,6 @@
 import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/icons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 
@@ -26,13 +25,13 @@ class AfterInfoTile extends ListTile {
   @override
   Widget? get title => Text(
         label ?? '',
-        style: const TextXS(textColor: Colours.grey),
+        style: Font.xs(color: Theme.of(context).colorScheme.secondary),
       );
 
   @override
   Widget? get subtitle => Text(
         info,
-        style: const TextS(isBold: true),
+        style: Font.s(color: Theme.of(context).colorScheme.primary, bold: true),
       );
 
   @override

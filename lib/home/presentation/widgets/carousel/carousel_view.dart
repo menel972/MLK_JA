@@ -10,9 +10,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/mocks/ui_after_preview_mocks.dart';
 import 'package:mlk_ja/common/router.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -47,6 +46,7 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
       itemBuilder: (context, index, realIndex) => GestureDetector(
         onTap: () => context.go('${ScreenPaths.after}/${items[index].uid}'),
         child: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
             Image.asset(
               items[index].image ?? items[index].type.image,
@@ -54,32 +54,32 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
               fit: BoxFit.fill,
             ),
             Container(
-              alignment: Alignment.bottomCenter,
-              height: double.infinity,
+              alignment: Alignment.center,
+              height: Dimensions.s(context).height,
               width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                vertical: marginXS(context).height,
-                horizontal: marginXXS(context).width,
-              ),
-              decoration: const BoxDecoration(
+              margin: EdgeInsets.only(bottom: Dimensions.xxs(context).height),
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.black54,
-                    Colors.black45,
-                    Colors.black38,
-                    Colors.black26,
                     Colors.transparent,
+                    Theme.of(context).colorScheme.background.withOpacity(0.4),
+                    Theme.of(context).colorScheme.background.withOpacity(0.6),
+                    Theme.of(context).colorScheme.background.withOpacity(0.7),
+                    Theme.of(context).colorScheme.background.withOpacity(0.6),
+                    Theme.of(context).colorScheme.background.withOpacity(0.4),
+                    Colors.transparent
                   ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
+
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const AutoSizeText(
+                  AutoSizeText(
                     'PRENDS TA PLACE :',
-                    style: TextM(textColor: Colours.white, isBold: true),
+                    style: Font.m(
+                        color: Theme.of(context).colorScheme.secondary,
+                        bold: true),
                     maxLines: 1,
                     minFontSize: 14,
                     overflow: TextOverflow.ellipsis,
@@ -87,7 +87,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                   AutoSizeText(
                     '${items[index].type.value} - ${DateFormat('MMMM', 'fr_FR').format(DateTime.now())}'
                         .toUpperCase(),
-                    style: const TextL(textColor: Colours.white, isBold: true),
+                    style: Font.l(
+                        color: Theme.of(context).colorScheme.secondary,
+                        bold: true),
                     maxLines: 1,
                     minFontSize: 20,
                     overflow: TextOverflow.ellipsis,
@@ -111,7 +113,7 @@ class Options extends CarouselOptions {
   Options(this.context, {required this.remote});
 
   @override
-  double? get height => screen(context).height;
+  double? get height => Dimensions.screen(context).height;
 
   @override
   bool get enableInfiniteScroll => true;

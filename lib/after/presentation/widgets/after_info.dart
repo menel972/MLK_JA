@@ -2,9 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/after/presentation/models/ui_after.dart';
-import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/icons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/common/theme/tiles.dart';
@@ -26,29 +25,29 @@ class AfterInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: marginXS(context).width),
-      height: screen(context).height * 0.7,
-      width: screen(context).width,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      padding: EdgeInsets.symmetric(horizontal: Dimensions.xs(context).width),
+      height: Dimensions.screen(context).height * 0.7,
+      width: Dimensions.screen(context).width,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       ),
       child: ListView.separated(
         itemCount: 9 + after.guests.length,
         separatorBuilder: (context, index) {
           if (index == 0) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 6 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 5 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
           if (index == 3 + after.guests.length) {
-            return SizedBox(height: marginXS(context).width);
+            return SizedBox(height: Dimensions.xs(context).width);
           }
-          return SizedBox(height: marginXXS(context).width);
+          return SizedBox(height: Dimensions.xxs(context).width);
         },
         itemBuilder: (context, index) => [
           AutoSizeText(
@@ -57,13 +56,16 @@ class AfterInfo extends StatelessWidget {
                 : '${after.type.value} - ${after.name}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextL(isBold: true),
+            style: Font.l(
+              color: Theme.of(context).colorScheme.primary,
+              bold: true,
+            ),
           ),
-          const AutoSizeText(
+          AutoSizeText(
             'Par :',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextS(textColor: Colours.grey),
+            style: Font.s(color: Theme.of(context).colorScheme.secondary),
           ),
           ...after.guests.map((guest) => GestureDetector(
                 onTap: () => guest.url != null
@@ -73,27 +75,28 @@ class AfterInfo extends StatelessWidget {
                   children: [
                     Text(
                       '${guest.name} • ',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
                         letterSpacing: 0.6,
-                        color: Colours.grey,
+                        color: Theme.of(context).colorScheme.secondary,
                         decoration: TextDecoration.underline,
                       ),
                     ),
                     Text(
                       guest.url != null ? ' Suivre' : '',
-                      style: const TextS(
-                        textColor: Colors.indigo,
-                        isBold: true,
+                      style: Font.s(
+                        color: Theme.of(context).colorScheme.outline,
+                        bold: true,
                       ),
                     ),
                   ],
                 ),
               )),
           AfterInfoButton(context, url: after.url),
-          const Text(
+          Text(
             'Où et quand',
-            style: TextM(isBold: true),
+            style: Font.m(
+                color: Theme.of(context).colorScheme.primary, bold: true),
           ),
           AfterInfoTile(
             context,
@@ -110,23 +113,25 @@ class AfterInfo extends StatelessWidget {
             info: after.location,
             coords: after.coords,
           ),
-          const Text(
+          Text(
             'À propos de cet évènement',
-            style: TextM(isBold: true),
+            style: Font.m(
+                color: Theme.of(context).colorScheme.primary, bold: true),
           ),
           ListTile(
             leading:
                 AfterInfoIcon(context, icon: Icons.history_toggle_off_outlined),
             title: Text(
               durationFormat(after.duration),
-              style: const TextS(isBold: true),
+              style: Font.s(
+                  color: Theme.of(context).colorScheme.primary, bold: true),
             ),
             contentPadding: const EdgeInsets.all(0),
           ),
           Text(
             after.description ?? '',
             textAlign: TextAlign.justify,
-            style: const TextS(),
+            style: Font.s(color: Theme.of(context).colorScheme.primary),
           ),
         ][index],
       ),

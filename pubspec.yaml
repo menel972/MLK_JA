@@ -58,7 +58,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  image_path: "assets/images/app_icon.png"
+  image_path: "assets/icons/app_icon.png"
   android: true
   ios: true
   min_sdk_android: 21
@@ -76,6 +76,8 @@ flutter:
   assets:
     - assets/images/
     - assets/images/staff/
+    - assets/images/afters/
+    - assets/images/logo/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

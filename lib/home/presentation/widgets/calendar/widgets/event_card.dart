@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 
@@ -22,17 +21,17 @@ class EventCard extends ListTile {
         event.name == null
             ? event.type.value
             : '${event.type.value} - ${event.name}',
-        style: const TextS(isBold: true),
+        style: Font.s(color: Theme.of(context).colorScheme.primary, bold: true),
       );
 
   @override
   Widget? get subtitle => Text(
         DateFormat('dd/MM/y').format(event.date),
-        style: const TextS(textColor: Colours.grey),
+        style: Font.s(color: Theme.of(context).colorScheme.secondary),
       );
 
   @override
-  Color? get tileColor => event.type.color.withOpacity(0.1);
+  Color? get tileColor => event.type.color.withOpacity(0.6);
 
   @override
   ShapeBorder? get shape => RoundedRectangleBorder(
