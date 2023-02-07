@@ -38,16 +38,17 @@ class FeedbackView extends StatelessWidget {
               child: Scrollbar(
                 child: ListView.separated(
                   itemCount: 3,
-                  separatorBuilder: (context, index) {
+                  separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(height: Dimensions.xs(context).width);
                   },
-                  itemBuilder: (context, index) => [
+                  itemBuilder: (BuildContext context, int index) => [
                     Card(
                       elevation: 1,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
-                            color: Theme.of(context).colorScheme.surface),
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(Dimensions.xxs(context).height),
@@ -56,22 +57,26 @@ class FeedbackView extends StatelessWidget {
                             Text(
                               'FAIS PARTI DU CHANGEMENT :',
                               style: Font.m(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  bold: true),
+                                color: Theme.of(context).colorScheme.primary,
+                                bold: true,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: Dimensions.xxs(context).height),
                             Visibility(
                               visible: lastEvent.type != AfterType.mlk,
                               child: FeedbackButton(
-                                  label: 'ON PEUT FAIRE MIEUX ?',
-                                  date:
-                                      '${lastEvent.name?.toUpperCase() ?? lastEvent.type.value.toUpperCase()} - ${DateFormat('dd/MM/y').format(lastEvent.date)}',
-                                  url: Strings.afterFormUrl),
+                                label: 'ON PEUT FAIRE MIEUX ?',
+                                date:
+                                    '${lastEvent.name?.toUpperCase() ?? lastEvent.type.value.toUpperCase()} - ${DateFormat('dd/MM/y').format(lastEvent.date)}',
+                                url: Strings.afterFormUrl,
+                              ),
                             ),
                             SizedBox(height: Dimensions.xxs(context).width),
                             const FeedbackButton(
-                                label: 'POSE TES QUESTIONS ICI', url: ''),
+                              label: 'POSE TES QUESTIONS ICI',
+                              url: '',
+                            ),
                           ],
                         ),
                       ),
@@ -81,7 +86,8 @@ class FeedbackView extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
-                            color: Theme.of(context).colorScheme.surface),
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(Dimensions.xxs(context).height),
@@ -90,8 +96,9 @@ class FeedbackView extends StatelessWidget {
                             Text(
                               'RESTE CONNECTÉ :',
                               style: Font.m(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  bold: true),
+                                color: Theme.of(context).colorScheme.primary,
+                                bold: true,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: Dimensions.xxs(context).height),
@@ -113,7 +120,8 @@ class FeedbackView extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
-                            color: Theme.of(context).colorScheme.surface),
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(Dimensions.xxs(context).height),
@@ -122,8 +130,9 @@ class FeedbackView extends StatelessWidget {
                             Text(
                               'MLK A BESOIN DE TOI :',
                               style: Font.m(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  bold: true),
+                                color: Theme.of(context).colorScheme.primary,
+                                bold: true,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: Dimensions.xxs(context).height),

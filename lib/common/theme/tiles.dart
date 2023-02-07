@@ -35,13 +35,17 @@ class AfterInfoTile extends ListTile {
       );
 
   @override
-  Widget? get leading => AfterInfoIcon(context,
-      icon: isDate ? Icons.access_time : Icons.location_on_outlined);
+  Widget? get leading => AfterInfoIcon(
+        context,
+        icon: isDate ? Icons.access_time : Icons.location_on_outlined,
+      );
 
   @override
-  Widget? get trailing => AfterInfoIcon(context,
-      isRounded: true,
-      icon: isDate ? Icons.calendar_today : Icons.near_me_outlined);
+  Widget? get trailing => AfterInfoIcon(
+        context,
+        isRounded: true,
+        icon: isDate ? Icons.calendar_today : Icons.near_me_outlined,
+      );
 
   @override
   EdgeInsetsGeometry? get contentPadding => const EdgeInsets.all(0);
@@ -51,7 +55,8 @@ class AfterInfoTile extends ListTile {
 
   @override
   GestureTapCallback? get onTap => () async {
-        final availableMaps = await MapLauncher.installedMaps;
+        final List<AvailableMap> availableMaps =
+            await MapLauncher.installedMaps;
 
         isDate
             ? Add2Calendar.addEvent2Cal(event!)

@@ -16,15 +16,25 @@ import 'package:flutter/material.dart';
 
 enum AfterType {
   worship(
-      'Worship Connect',
-      'assets/images/afters/Visuel After_Worship Connect.jpg',
-      Color(0xff6767b1)),
-  talk('Real Talk', 'assets/images/afters/Visuel After_Real Talk.png',
-      Color(0xff75fabc)),
-  chill('Jeu', 'assets/images/afters/Visuel After_Chill Connect.JPEG',
-      Color(0xffc8c8c8)),
-  open('Open Mic', 'assets/images/afters/Visuel After_OPEN MIC.png',
-      Color(0xfff9dedc)),
+    'Worship Connect',
+    'assets/images/afters/Visuel After_Worship Connect.jpg',
+    Color(0xff6767b1),
+  ),
+  talk(
+    'Real Talk',
+    'assets/images/afters/Visuel After_Real Talk.png',
+    Color(0xff75fabc),
+  ),
+  chill(
+    'Jeu',
+    'assets/images/afters/Visuel After_Chill Connect.JPEG',
+    Color(0xffc8c8c8),
+  ),
+  open(
+    'Open Mic',
+    'assets/images/afters/Visuel After_OPEN MIC.png',
+    Color(0xfff9dedc),
+  ),
   special('Special Event', '', CupertinoColors.systemTeal),
   mlk('Évènement MLK', '', Colors.brown);
 

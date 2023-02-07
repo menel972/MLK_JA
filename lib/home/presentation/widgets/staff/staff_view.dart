@@ -21,7 +21,9 @@ class StaffView extends StatelessWidget {
           AutoSizeText(
             'LE STAFF JEUNES ADULTES',
             style: Font.l(
-                color: Theme.of(context).colorScheme.primary, bold: true),
+              color: Theme.of(context).colorScheme.primary,
+              bold: true,
+            ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: Dimensions.xxs(context).width),
@@ -33,10 +35,14 @@ class StaffView extends StatelessWidget {
               padding:
                   EdgeInsets.symmetric(vertical: Dimensions.xs(context).width),
               children: [
-                const UiStaffMember('Ménélick',
-                    image: 'assets/images/staff/menelick.png'),
-                const UiStaffMember('Thérésa',
-                    image: 'assets/images/staff/theresa.png'),
+                const UiStaffMember(
+                  'Ménélick',
+                  image: 'assets/images/staff/menelick.png',
+                ),
+                const UiStaffMember(
+                  'Thérésa',
+                  image: 'assets/images/staff/theresa.png',
+                ),
                 const UiStaffMember('Patrick'),
                 const UiStaffMember('Alexis'),
                 const UiStaffMember('Mélanie'),
@@ -49,7 +55,10 @@ class StaffView extends StatelessWidget {
                 const UiStaffMember('Sarah'),
                 const UiStaffMember('Ludhmilia'),
                 const UiStaffMember('Sandra'),
-              ].map((member) => MemberCard(context, member: member)).toList(),
+              ]
+                  .map((UiStaffMember member) =>
+                      MemberCard(context, member: member))
+                  .toList(),
             ),
           ),
         ],

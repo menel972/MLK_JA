@@ -13,6 +13,7 @@ import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
+import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:provider/provider.dart';
 
 class CarouselView extends riverpod.ConsumerStatefulWidget {
@@ -25,7 +26,7 @@ class CarouselView extends riverpod.ConsumerStatefulWidget {
 class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
   @override
   void initState() {
-    Timer.periodic(const Duration(seconds: 10), (timer) {
+    Timer.periodic(const Duration(seconds: 10), (Timer timer) {
       controller.nextPage(duration: const Duration(milliseconds: 600));
     });
 
@@ -39,11 +40,13 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
     Provider.of<EventProvider>(context, listen: false)
         .initEvents(uiAftersPreviewMocked);
 
-    final items = Provider.of<EventProvider>(context).currentMonthEvents;
+    final List<UiAfterPreview> items =
+        Provider.of<EventProvider>(context).currentMonthEvents;
 
     return FlutterCarousel.builder(
       itemCount: items.length,
-      itemBuilder: (context, index, realIndex) => GestureDetector(
+      itemBuilder: (BuildContext context, int index, int realIndex) =>
+          GestureDetector(
         onTap: () => context.go('${ScreenPaths.after}/${items[index].uid}'),
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -69,7 +72,6 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                     Theme.of(context).colorScheme.background.withOpacity(0.4),
                     Colors.transparent
                   ],
-
                 ),
               ),
               child: Column(
@@ -78,8 +80,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                   AutoSizeText(
                     'PRENDS TA PLACE :',
                     style: Font.m(
-                        color: Theme.of(context).colorScheme.secondary,
-                        bold: true),
+                      color: Theme.of(context).colorScheme.secondary,
+                      bold: true,
+                    ),
                     maxLines: 1,
                     minFontSize: 14,
                     overflow: TextOverflow.ellipsis,
@@ -88,8 +91,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                     '${items[index].type.value} - ${DateFormat('MMMM', 'fr_FR').format(DateTime.now())}'
                         .toUpperCase(),
                     style: Font.l(
-                        color: Theme.of(context).colorScheme.secondary,
-                        bold: true),
+                      color: Theme.of(context).colorScheme.secondary,
+                      bold: true,
+                    ),
                     maxLines: 1,
                     minFontSize: 20,
                     overflow: TextOverflow.ellipsis,

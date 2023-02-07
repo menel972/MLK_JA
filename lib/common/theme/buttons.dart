@@ -9,8 +9,12 @@ class SubscriptionButton extends GestureDetector {
   final String label;
   final String? url;
 
-  SubscriptionButton(this.context,
-      {super.key, this.label = 'S\'inscrire', this.url});
+  SubscriptionButton(
+    this.context, {
+    super.key,
+    this.label = 'S\'inscrire',
+    this.url,
+  });
 
   @override
   GestureTapCallback? get onTap =>
@@ -28,9 +32,10 @@ class SubscriptionButton extends GestureDetector {
         child: AutoSizeText(
           label,
           style: Font.xs(
-              color: url != null
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.secondary),
+            color: url != null
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.secondary,
+          ),
           minFontSize: 10,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -43,8 +48,12 @@ class AfterInfoButton extends GestureDetector {
   final String label;
   final String? url;
 
-  AfterInfoButton(this.context,
-      {super.key, this.label = 'RÉSERVE TA PLACE', this.url});
+  AfterInfoButton(
+    this.context, {
+    super.key,
+    this.label = 'RÉSERVE TA PLACE',
+    this.url,
+  });
 
   @override
   GestureTapCallback? get onTap =>
@@ -63,7 +72,9 @@ class AfterInfoButton extends GestureDetector {
         child: AutoSizeText(
           label,
           style: Font.s(
-              color: url != null ? Colors.white : Colors.white38, bold: true),
+            color: url != null ? Colors.white : Colors.white38,
+            bold: true,
+          ),
           textAlign: TextAlign.center,
           minFontSize: 10,
           maxLines: 1,

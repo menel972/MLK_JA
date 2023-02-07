@@ -13,13 +13,13 @@ class EventFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> filters = AfterType.values
         .map(
-          (type) => GestureDetector(
+          (AfterType type) => GestureDetector(
             onTap: () => setFilter(type),
             child: Container(
               alignment: Alignment.center,
-              padding:
-                  EdgeInsets.symmetric(
-                  horizontal: Dimensions.xxs(context).height),
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.xxs(context).height,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: type == filter
@@ -29,9 +29,10 @@ class EventFilter extends StatelessWidget {
               child: Text(
                 type.value,
                 style: Font.xs(
-                    color: type == filter
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.secondary),
+                  color: type == filter
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
           ),
@@ -41,10 +42,10 @@ class EventFilter extends StatelessWidget {
     return ListView.separated(
       itemCount: filters.length,
       scrollDirection: Axis.horizontal,
-      separatorBuilder: (context, index) => SizedBox(
+      separatorBuilder: (BuildContext context, int index) => SizedBox(
         width: Dimensions.xxs(context).width,
       ),
-      itemBuilder: (context, index) => filters[index],
+      itemBuilder: (BuildContext context, int index) => filters[index],
       padding: EdgeInsets.all(
         Dimensions.xxs(context).width,
       ),

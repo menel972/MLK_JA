@@ -1,4 +1,5 @@
 import 'package:mlk_ja/common/enums.dart';
+import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 
 List<UiAfterPreview> uiAftersPreviewMocked = [
@@ -42,7 +43,8 @@ List<UiAfterPreview> uiAftersPreviewMocked = [
     uid: '6',
     type: AfterType.talk,
     date: DateTime.utc(2023, 2, 11, 19, 45),
-    name: 'Couple / Célibat',
+    name: 'Et si on parlait couple',
+    image: '${Strings.afterImagesPath}/AFTER_V2.jpg',
   ),
   UiAfterPreview(
     uid: '7',

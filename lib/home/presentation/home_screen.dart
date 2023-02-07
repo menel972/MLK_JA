@@ -21,12 +21,12 @@ class HomeScreen extends HookConsumerWidget {
     FlutterNativeSplash.remove();
 
     return BlocConsumer<HomeBloc, ConnectivitySate>(
-      listener: (context, state) {
+      listener: (BuildContext context, ConnectivitySate state) {
         if (state.connection == ConnectivityResult.none) {
           context.go(ScreenPaths.connectivityError);
         }
       },
-      builder: (context, state) {
+      builder: (BuildContext context, ConnectivitySate state) {
         return Scaffold(
           body: [
             const CarouselView(),

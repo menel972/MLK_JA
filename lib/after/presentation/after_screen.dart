@@ -14,7 +14,8 @@ class AfterScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    UiAfter after = uiAfterMocked.firstWhere((event) => event.uid == uid);
+    UiAfter after =
+        uiAfterMocked.firstWhere((UiAfter event) => event.uid == uid);
 
     return RefreshIndicator(
       triggerMode: RefreshIndicatorTriggerMode.anywhere,
@@ -84,12 +85,13 @@ class AfterScreen extends HookConsumerWidget {
             Positioned(
               bottom: 0,
               child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.background,
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(30)),
-                  ),
-                  child: AfterInfo(after)),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(30)),
+                ),
+                child: AfterInfo(after),
+              ),
             )
           ],
         ),
