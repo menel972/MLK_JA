@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mlk_ja/common/size.dart';
+import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_staff_member.dart';
 
@@ -18,7 +19,10 @@ class MemberCard extends Card {
         alignment: AlignmentDirectional.center,
         children: [
           Image.asset(
-            member.image ?? 'assets/images/logo_noir.PNG',
+            member.image ??
+                (MediaQuery.platformBrightnessOf(context) == Brightness.light
+                    ? '${Strings.logoImagesPath}/logo_noir.PNG'
+                    : '${Strings.logoImagesPath}/logo_blanc.png'),
             fit: BoxFit.cover,
             height: screen(context).height * 0.2,
           ),
@@ -38,7 +42,9 @@ class MemberCard extends Card {
             bottom: 10,
             child: AutoSizeText(
               member.name,
-              style: const TextM(isBold: true),
+              style: TextM(
+                  textColor: Theme.of(context).colorScheme.primary,
+                  isBold: true),
             ),
           ),
         ],

@@ -18,9 +18,10 @@ class StaffView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const AutoSizeText(
+          AutoSizeText(
             'LE STAFF JEUNES ADULTES',
-            style: TextL(isBold: true),
+            style: TextL(
+                textColor: Theme.of(context).colorScheme.primary, isBold: true),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: marginXXS(context).width),

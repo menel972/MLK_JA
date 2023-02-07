@@ -8,7 +8,6 @@ import 'package:intl/intl.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
 import 'package:mlk_ja/common/size.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
@@ -53,9 +52,7 @@ class CalendarView extends riverpod.HookConsumerWidget {
                   onDaySelected: (selectedDay, focusedDay) =>
                       context.read<CalendarBloc>().onDateSelected(selectedDay),
                   startingDayOfWeek: StartingDayOfWeek.monday,
-                  selectedDayPredicate: (day) {
-                    return isSameDay(state.date, day);
-                  },
+                  selectedDayPredicate: (day) => isSameDay(state.date, day),
                   weekendDays: const [
                     DateTime.monday,
                     DateTime.tuesday,
@@ -66,21 +63,22 @@ class CalendarView extends riverpod.HookConsumerWidget {
                   calendarStyle: CalendarStyle(
                     outsideDaysVisible: false,
                     todayDecoration: BoxDecoration(
-                      border: Border.all(color: Colors.black38),
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.tertiary),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     selectedDecoration: BoxDecoration(
-                      color: Colors.black38,
-                      border: Border.all(color: Colors.black38),
+                      color: Theme.of(context).colorScheme.tertiary,
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.tertiary),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     markerDecoration: BoxDecoration(
-                      color: Colors.red.shade300,
+                      color: Theme.of(context).colorScheme.error,
                       shape: BoxShape.circle,
                     ),
-                    defaultTextStyle: const TextStyle(color: Colors.black),
-                    weekendTextStyle: const TextStyle(color: Colours.grey),
-                    todayTextStyle: const TextStyle(color: Colors.black),
+                    weekendTextStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.tertiary),
                   ),
                   eventLoader: (day) => getEvent(day, state.type),
                   availableCalendarFormats: const {
@@ -91,12 +89,25 @@ class CalendarView extends riverpod.HookConsumerWidget {
                       return Text(
                         DateFormat('MMMM y', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
-                        style: const TextL(isBold: true),
+                        style: TextL(
+                            textColor: Theme.of(context).colorScheme.primary,
+                            isBold: true),
+                      );
+                    },
+                    dowBuilder: (context, day) {
+                      return Text(
+                        DateFormat('E', 'fr_FR').format(day).toTitleCase(),
+                        textAlign: TextAlign.center,
+                        style: TextS(
+                            textColor: Theme.of(context).colorScheme.secondary,
+                            isBold: true),
                       );
                     },
                   ),
                 ),
-                const Text('Flitrer :', style: TextS(textColor: Colours.grey)),
+                Text('Flitrer :',
+                    style: TextS(
+                        textColor: Theme.of(context).colorScheme.secondary)),
                 SizedBox(
                   height: screen(context).width * 0.15,
                   child: EventFilter(
@@ -104,8 +115,8 @@ class CalendarView extends riverpod.HookConsumerWidget {
                     state.type,
                   ),
                 ),
-                const Divider(
-                  color: Colors.black,
+                Divider(
+                  color: Theme.of(context).colorScheme.primary,
                   height: 5,
                 ),
               ] +

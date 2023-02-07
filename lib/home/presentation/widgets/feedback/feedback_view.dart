@@ -29,7 +29,9 @@ class FeedbackView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo_noir.PNG',
+              MediaQuery.platformBrightnessOf(context) == Brightness.light
+                  ? '${Strings.logoImagesPath}/logo_noir.PNG'
+                  : '${Strings.logoImagesPath}/logo_blanc.png',
               height: marginL(context).width,
             ),
             Expanded(
@@ -44,15 +46,19 @@ class FeedbackView extends StatelessWidget {
                       elevation: 1,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
-                        side: const BorderSide(color: Colors.black12),
+                        side: BorderSide(
+                            color: Theme.of(context).colorScheme.surface),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(marginXXS(context).height),
                         child: Column(
                           children: [
-                            const Text(
-                              'FAIS PARTI DU CHANGEMENT : ',
-                              style: TextM(isBold: true),
+                            Text(
+                              'FAIS PARTI DU CHANGEMENT :',
+                              style: TextM(
+                                  textColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  isBold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),
@@ -75,19 +81,23 @@ class FeedbackView extends StatelessWidget {
                       elevation: 1,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
-                        side: const BorderSide(color: Colors.black12),
+                        side: BorderSide(
+                            color: Theme.of(context).colorScheme.surface),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(marginXXS(context).height),
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               'RESTE CONNECTÉ :',
-                              style: TextM(isBold: true),
+                              style: TextM(
+                                  textColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  isBold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),
-                            FeedbackButton(
+                            const FeedbackButton(
                               label: 'SUIS NOUS SUR INSTAGRAM',
                               url: Strings.instagramUrl,
                             ),
@@ -104,19 +114,23 @@ class FeedbackView extends StatelessWidget {
                       elevation: 1,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
-                        side: const BorderSide(color: Colors.black12),
+                        side: BorderSide(
+                            color: Theme.of(context).colorScheme.surface),
                       ),
                       child: Container(
                         padding: EdgeInsets.all(marginXXS(context).height),
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               'MLK A BESOIN DE TOI :',
-                              style: TextM(isBold: true),
+                              style: TextM(
+                                  textColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  isBold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),
-                            FeedbackButton(
+                            const FeedbackButton(
                               label: 'IMPLIQUE TOI DANS UN SERVICE',
                               url: Strings.mlkWebsiteUrl,
                             ),

@@ -5,7 +5,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mlk_ja/common/router.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/home/presentation/bloc/home_bloc.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/calendar_view.dart';
@@ -29,7 +28,6 @@ class HomeScreen extends HookConsumerWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colours.background,
           body: [
             const CarouselView(),
             BlocProvider(

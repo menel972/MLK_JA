@@ -7,7 +7,7 @@ import 'package:mlk_ja/common/web_view.dart';
 
 class SubscriptionButton extends GestureDetector {
   final BuildContext context;
-  final String? label;
+  final String label;
   final String? url;
 
   SubscriptionButton(this.context,
@@ -20,13 +20,18 @@ class SubscriptionButton extends GestureDetector {
   @override
   Widget? get child => Container(
         decoration: BoxDecoration(
-          color: url != null ? Colours.grey : Colors.black38,
+          color: url != null
+              ? Theme.of(context).colorScheme.onSecondary
+              : Theme.of(context).colorScheme.onTertiary,
           borderRadius: BorderRadius.circular(5),
         ),
         padding: EdgeInsets.all(marginXXS(context).width),
         child: AutoSizeText(
-          label!,
-          style: TextXS(textColor: url != null ? Colors.white : Colors.white60),
+          label,
+          style: TextXS(
+              textColor: url != null
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.secondary),
           minFontSize: 10,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

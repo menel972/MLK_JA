@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/size.dart';
-import 'package:mlk_ja/common/theme/colours.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 
 class EventFilter extends StatelessWidget {
@@ -23,12 +22,15 @@ class EventFilter extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: type == filter
-                    ? type.color.withOpacity(0.2)
-                    : Colours.grey.withOpacity(0.2),
+                    ? type.color.withOpacity(0.6)
+                    : Theme.of(context).colorScheme.tertiaryContainer,
               ),
               child: Text(
                 type.value,
-                style: const TextXS(),
+                style: TextXS(
+                    textColor: type == filter
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.secondary),
               ),
             ),
           ),
