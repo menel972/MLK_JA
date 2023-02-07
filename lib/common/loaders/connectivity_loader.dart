@@ -15,7 +15,6 @@ class ConnectivityLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, ConnectivitySate>(listener: (context, state) {
-      print(state.connection);
       if (state.connection != ConnectivityResult.none) {
         context.go(ScreenPaths.home);
       }
@@ -30,15 +29,15 @@ class ConnectivityLoader extends StatelessWidget {
                   : '${Strings.logoImagesPath}/logo_blanc.png',
               height: marginL(context).height,
             ),
-            const AutoSizeText(
+            AutoSizeText(
               'Cette application a besoin d\'internet pour fonctonner.',
-              style: TextM(),
+              style: Font.m(color: Theme.of(context).colorScheme.primary),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: marginXXS(context).height),
-            const AutoSizeText(
+            AutoSizeText(
               'Vérifie ta connexion.',
-              style: TextL(),
+              style: Font.l(color: Theme.of(context).colorScheme.primary),
               textAlign: TextAlign.center,
             ),
           ],

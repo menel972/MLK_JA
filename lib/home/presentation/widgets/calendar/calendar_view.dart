@@ -89,25 +89,25 @@ class CalendarView extends riverpod.HookConsumerWidget {
                       return Text(
                         DateFormat('MMMM y', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
-                        style: TextL(
-                            textColor: Theme.of(context).colorScheme.primary,
-                            isBold: true),
+                        style: Font.l(
+                            color: Theme.of(context).colorScheme.primary,
+                            bold: true),
                       );
                     },
                     dowBuilder: (context, day) {
                       return Text(
                         DateFormat('E', 'fr_FR').format(day).toTitleCase(),
                         textAlign: TextAlign.center,
-                        style: TextS(
-                            textColor: Theme.of(context).colorScheme.secondary,
-                            isBold: true),
+                        style: Font.s(
+                            color: Theme.of(context).colorScheme.secondary,
+                            bold: true),
                       );
                     },
                   ),
                 ),
                 Text('Flitrer :',
-                    style: TextS(
-                        textColor: Theme.of(context).colorScheme.secondary)),
+                    style:
+                        Font.s(color: Theme.of(context).colorScheme.secondary)),
                 SizedBox(
                   height: screen(context).width * 0.15,
                   child: EventFilter(

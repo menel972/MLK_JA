@@ -27,8 +27,8 @@ class SubscriptionButton extends GestureDetector {
         padding: EdgeInsets.all(marginXXS(context).width),
         child: AutoSizeText(
           label,
-          style: TextXS(
-              textColor: url != null
+          style: Font.xs(
+              color: url != null
                   ? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.secondary),
           minFontSize: 10,
@@ -62,9 +62,8 @@ class AfterInfoButton extends GestureDetector {
         margin: EdgeInsets.symmetric(vertical: marginXXS(context).height),
         child: AutoSizeText(
           label,
-          style: TextS(
-              textColor: url != null ? Colors.white : Colors.white38,
-              isBold: true),
+          style: Font.s(
+              color: url != null ? Colors.white : Colors.white38, bold: true),
           textAlign: TextAlign.center,
           minFontSize: 10,
           maxLines: 1,
@@ -91,7 +90,7 @@ class FeedbackButton extends ListTile {
   @override
   Widget? get title => AutoSizeText(
         label,
-        style: const TextM(textColor: Colors.white),
+        style: Font.m(color: Colors.white),
         textAlign: TextAlign.center,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
@@ -102,7 +101,7 @@ class FeedbackButton extends ListTile {
   Widget? get subtitle => date != null
       ? AutoSizeText(
           date!,
-          style: const TextS(textColor: Colors.white70),
+          style: Font.s(color: Colors.white70),
           textAlign: TextAlign.center,
           maxLines: 1,
           minFontSize: 12,

@@ -56,8 +56,8 @@ class AfterInfo extends StatelessWidget {
                 : '${after.type.value} - ${after.name}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Font.L(
-              Theme.of(context).colorScheme.primary,
+            style: Font.l(
+              color: Theme.of(context).colorScheme.primary,
               bold: true,
             ),
           ),
@@ -65,7 +65,7 @@ class AfterInfo extends StatelessWidget {
             'Par :',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextS(textColor: Theme.of(context).colorScheme.secondary),
+            style: Font.s(color: Theme.of(context).colorScheme.secondary),
           ),
           ...after.guests.map((guest) => GestureDetector(
                 onTap: () => guest.url != null
@@ -84,9 +84,9 @@ class AfterInfo extends StatelessWidget {
                     ),
                     Text(
                       guest.url != null ? ' Suivre' : '',
-                      style: TextS(
-                        textColor: Theme.of(context).colorScheme.outline,
-                        isBold: true,
+                      style: Font.s(
+                        color: Theme.of(context).colorScheme.outline,
+                        bold: true,
                       ),
                     ),
                   ],
@@ -95,8 +95,8 @@ class AfterInfo extends StatelessWidget {
           AfterInfoButton(context, url: after.url),
           Text(
             'Où et quand',
-            style: TextM(
-                textColor: Theme.of(context).colorScheme.primary, isBold: true),
+            style: Font.m(
+                color: Theme.of(context).colorScheme.primary, bold: true),
           ),
           AfterInfoTile(
             context,
@@ -115,24 +115,23 @@ class AfterInfo extends StatelessWidget {
           ),
           Text(
             'À propos de cet évènement',
-            style: TextM(
-                textColor: Theme.of(context).colorScheme.primary, isBold: true),
+            style: Font.m(
+                color: Theme.of(context).colorScheme.primary, bold: true),
           ),
           ListTile(
             leading:
                 AfterInfoIcon(context, icon: Icons.history_toggle_off_outlined),
             title: Text(
               durationFormat(after.duration),
-              style: TextS(
-                  textColor: Theme.of(context).colorScheme.primary,
-                  isBold: true),
+              style: Font.s(
+                  color: Theme.of(context).colorScheme.primary, bold: true),
             ),
             contentPadding: const EdgeInsets.all(0),
           ),
           Text(
             after.description ?? '',
             textAlign: TextAlign.justify,
-            style: TextS(textColor: Theme.of(context).colorScheme.primary),
+            style: Font.s(color: Theme.of(context).colorScheme.primary),
           ),
         ][index],
       ),

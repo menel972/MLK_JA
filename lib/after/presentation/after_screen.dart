@@ -83,7 +83,13 @@ class AfterScreen extends HookConsumerWidget {
             ),
             Positioned(
               bottom: 0,
-              child: AfterInfo(after),
+              child: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.background,
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(30)),
+                  ),
+                  child: AfterInfo(after)),
             )
           ],
         ),

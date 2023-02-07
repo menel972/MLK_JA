@@ -55,10 +55,9 @@ class FeedbackView extends StatelessWidget {
                           children: [
                             Text(
                               'FAIS PARTI DU CHANGEMENT :',
-                              style: TextM(
-                                  textColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  isBold: true),
+                              style: Font.m(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  bold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),
@@ -90,10 +89,9 @@ class FeedbackView extends StatelessWidget {
                           children: [
                             Text(
                               'RESTE CONNECTÉ :',
-                              style: TextM(
-                                  textColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  isBold: true),
+                              style: Font.m(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  bold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),
@@ -123,10 +121,9 @@ class FeedbackView extends StatelessWidget {
                           children: [
                             Text(
                               'MLK A BESOIN DE TOI :',
-                              style: TextM(
-                                  textColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  isBold: true),
+                              style: Font.m(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  bold: true),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: marginXXS(context).height),

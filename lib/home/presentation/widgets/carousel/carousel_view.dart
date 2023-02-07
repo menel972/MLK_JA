@@ -78,9 +78,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                 children: [
                   AutoSizeText(
                     'PRENDS TA PLACE :',
-                    style: TextM(
-                        textColor: Theme.of(context).colorScheme.secondary,
-                        isBold: true),
+                    style: Font.m(
+                        color: Theme.of(context).colorScheme.secondary,
+                        bold: true),
                     maxLines: 1,
                     minFontSize: 14,
                     overflow: TextOverflow.ellipsis,
@@ -88,9 +88,9 @@ class _CarouselViewState extends riverpod.ConsumerState<CarouselView> {
                   AutoSizeText(
                     '${items[index].type.value} - ${DateFormat('MMMM', 'fr_FR').format(DateTime.now())}'
                         .toUpperCase(),
-                    style: TextL(
-                        textColor: Theme.of(context).colorScheme.secondary,
-                        isBold: true),
+                    style: Font.l(
+                        color: Theme.of(context).colorScheme.secondary,
+                        bold: true),
                     maxLines: 1,
                     minFontSize: 20,
                     overflow: TextOverflow.ellipsis,

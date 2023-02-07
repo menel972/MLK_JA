@@ -27,8 +27,8 @@ class EventFilter extends StatelessWidget {
               ),
               child: Text(
                 type.value,
-                style: TextXS(
-                    textColor: type == filter
+                style: Font.xs(
+                    color: type == filter
                         ? Theme.of(context).colorScheme.primary
                         : Theme.of(context).colorScheme.secondary),
               ),

@@ -25,14 +25,13 @@ class AfterInfoTile extends ListTile {
   @override
   Widget? get title => Text(
         label ?? '',
-        style: TextXS(textColor: Theme.of(context).colorScheme.secondary),
+        style: Font.xs(color: Theme.of(context).colorScheme.secondary),
       );
 
   @override
   Widget? get subtitle => Text(
         info,
-        style: TextS(
-            textColor: Theme.of(context).colorScheme.primary, isBold: true),
+        style: Font.s(color: Theme.of(context).colorScheme.primary, bold: true),
       );
 
   @override

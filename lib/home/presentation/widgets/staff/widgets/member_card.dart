@@ -42,9 +42,8 @@ class MemberCard extends Card {
             bottom: 10,
             child: AutoSizeText(
               member.name,
-              style: TextM(
-                  textColor: Theme.of(context).colorScheme.primary,
-                  isBold: true),
+              style: Font.m(
+                  color: Theme.of(context).colorScheme.primary, bold: true),
             ),
           ),
         ],

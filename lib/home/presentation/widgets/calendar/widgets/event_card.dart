@@ -21,14 +21,13 @@ class EventCard extends ListTile {
         event.name == null
             ? event.type.value
             : '${event.type.value} - ${event.name}',
-        style: TextS(
-            textColor: Theme.of(context).colorScheme.primary, isBold: true),
+        style: Font.s(color: Theme.of(context).colorScheme.primary, bold: true),
       );
 
   @override
   Widget? get subtitle => Text(
         DateFormat('dd/MM/y').format(event.date),
-        style: TextS(textColor: Theme.of(context).colorScheme.secondary),
+        style: Font.s(color: Theme.of(context).colorScheme.secondary),
       );
 
   @override
