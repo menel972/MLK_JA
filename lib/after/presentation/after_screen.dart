@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mlk_ja/after/presentation/models/ui_after.dart';
 import 'package:mlk_ja/after/presentation/widgets/after_info.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/mocks/ui_after_mocks.dart';
 import 'package:mlk_ja/common/router.dart';
-import 'package:mlk_ja/common/dimensions.dart';
 
 class AfterScreen extends HookConsumerWidget {
   final String uid;

@@ -45,6 +45,8 @@ List<UiAfterPreview> uiAftersPreviewMocked = [
     date: DateTime.utc(2023, 2, 11, 19, 45),
     name: 'Et si on parlait couple',
     image: '${Strings.afterImagesPath}/AFTER_V2.jpg',
+    url:
+        'https://www.eventbrite.fr/e/billets-after-jeunes-adultes-samedi-a-20h00-11-fevrier-2023-529366428237?aff=ebdsoporgprofile',
   ),
   UiAfterPreview(
     uid: '7',

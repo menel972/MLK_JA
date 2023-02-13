@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-
-import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/strings.dart';
 import 'package:mlk_ja/common/theme/buttons.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';

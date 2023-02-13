@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:mlk_ja/common/providers/event_provider.dart';
 import 'package:mlk_ja/common/router.dart';
 import 'package:mlk_ja/common/theme/theme.dart';
-import 'package:mlk_ja/common/providers/event_provider.dart';
 import 'package:provider/src/change_notifier_provider.dart'
     show ChangeNotifierProvider;
 import 'package:provider/src/provider.dart' show MultiProvider;

@@ -57,7 +57,7 @@ class StaffView extends StatelessWidget {
                 const UiStaffMember('Sandra'),
               ]
                   .map((UiStaffMember member) =>
-                      MemberCard(context, member: member))
+                      MemberCard(context, member: member),)
                   .toList(),
             ),
           ),

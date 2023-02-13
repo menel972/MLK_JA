@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/dimensions.dart';
+import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 
 class EventFilter extends StatelessWidget {

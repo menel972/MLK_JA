@@ -92,6 +92,8 @@ List<UiAfter> uiAfterMocked = [
     coords: Coords(48.76827, 2.45820),
     name: 'Et si on parlait couple',
     image: '${Strings.afterImagesPath}/AFTER_V2.jpg',
+    url:
+        'https://www.eventbrite.fr/e/billets-after-jeunes-adultes-samedi-a-20h00-11-fevrier-2023-529366428237?aff=ebdsoporgprofile',
   ),
   UiAfter(
     uid: '7',

@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' as riverpod;
 import 'package:intl/intl.dart';
+import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/enums.dart';
 import 'package:mlk_ja/common/providers/event_provider.dart';
-import 'package:mlk_ja/common/dimensions.dart';
 import 'package:mlk_ja/common/theme/text_theme.dart';
 import 'package:mlk_ja/home/presentation/models/ui_after_preview.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/bloc/calendar_bloc.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/widgets/event_card.dart';
 import 'package:mlk_ja/home/presentation/widgets/calendar/widgets/event_filter.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:provider/provider.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class CalendarView extends riverpod.HookConsumerWidget {
   const CalendarView({super.key});
