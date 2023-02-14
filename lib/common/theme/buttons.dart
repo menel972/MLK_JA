@@ -89,9 +89,9 @@ class FeedbackButton extends ListTile {
   final String? date;
 
   const FeedbackButton({
-    super.key,
     required this.label,
     required this.url,
+    super.key,
     this.date,
   });
 

@@ -10,7 +10,11 @@ class EventCard extends ListTile {
   final BuildContext context;
   final UiAfterPreview event;
 
-  const EventCard(this.context, {super.key, required this.event});
+  const EventCard(
+    this.context, {
+    required this.event,
+    super.key,
+  });
 
   @override
   GestureTapCallback? get onTap =>

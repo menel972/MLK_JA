@@ -20,11 +20,11 @@ class UiAfter extends Equatable {
   const UiAfter({
     required this.uid,
     required this.type,
+    required this.guests,
+    required this.date,
     this.name,
     this.description,
-    required this.guests,
     this.url,
-    required this.date,
     this.duration = const Duration(hours: 2),
     this.image,
     this.location = 'Espace Martin Luther King',

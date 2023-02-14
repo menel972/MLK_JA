@@ -11,12 +11,16 @@ class EventProvider extends ChangeNotifier {
       .toList();
 
   UiAfterPreview get lastEvent {
-    List<UiAfterPreview> previousEvents = _events
-        .where((UiAfterPreview event) => event.date.isBefore(DateTime.now()))
-        .toList();
+    List<UiAfterPreview> previousEvents = [];
 
+    // ignore: cascade_invocations
     previousEvents
-        .sort((UiAfterPreview a, UiAfterPreview b) => a.date.compareTo(b.date));
+      ..addAll(
+        _events.where(
+          (UiAfterPreview event) => event.date.isBefore(DateTime.now()),
+        ),
+      )
+      ..sort((UiAfterPreview a, UiAfterPreview b) => a.date.compareTo(b.date));
 
     return previousEvents.last;
   }

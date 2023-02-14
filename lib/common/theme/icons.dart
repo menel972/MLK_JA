@@ -8,9 +8,9 @@ class AfterInfoIcon extends Container {
 
   AfterInfoIcon(
     this.context, {
+    required this.icon,
     super.key,
     this.isRounded = false,
-    required this.icon,
   });
 
   @override

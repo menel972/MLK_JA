@@ -10,8 +10,8 @@ class MemberCard extends Card {
   final UiStaffMember member;
   const MemberCard(
     this.context, {
-    super.key,
     required this.member,
+    super.key,
   });
 
   @override

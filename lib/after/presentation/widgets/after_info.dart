@@ -14,10 +14,16 @@ class AfterInfo extends StatelessWidget {
   const AfterInfo(this.after, {super.key});
 
   String durationFormat(Duration d) {
-    List<String> a = d.toString().split('.');
-    a.removeLast();
-    List<String> b = a.first.split(':');
-    b.removeLast();
+    List<String> a = [];
+    List<String> b = [];
+
+    a
+      ..addAll(d.toString().split('.'))
+      ..removeLast();
+
+    b
+      ..addAll(a.first.split(':'))
+      ..removeLast();
 
     return b.join(' h ');
   }

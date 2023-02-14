@@ -14,12 +14,12 @@ class AfterInfoTile extends ListTile {
 
   const AfterInfoTile(
     this.context, {
-    super.key,
     required this.isDate,
     required this.info,
     this.label,
     this.event,
     this.coords,
+    super.key,
   });
 
   @override

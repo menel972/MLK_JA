@@ -5,9 +5,9 @@ class HomeBottomBar extends BottomNavigationBar {
   final Function(int) function;
 
   HomeBottomBar({
-    super.key,
     required this.index,
     required this.function,
+    super.key,
   }) : super(
           items: [
             BottomNavigationBarItem(
